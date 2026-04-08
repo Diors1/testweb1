@@ -11,16 +11,12 @@ const links: NavLink[] = [
 function Navbar() {
   return (
     <nav style={{ backgroundColor: "rgba(10, 10, 10, 0.85)" }} className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-10 py-5 border-b border-white/5">
-
-      
       <a href="/" style={{ lineHeight: "1.1" }} className="flex flex-col text-white font-bold">
         <span className="text-2xl tracking-widest">
           C<span style={{ color: "#00d4ff" }}>O</span>DE
         </span>
         <span className="text-xs tracking-[0.5em] text-white">LAB</span>
       </a>
-
-    
       <ul className="flex gap-10">
         {links.map((link) => (
           <li key={link.label}>
@@ -34,8 +30,6 @@ function Navbar() {
           </li>
         ))}
       </ul>
-
-     
       <a href="#contact">
         <button
           style={{

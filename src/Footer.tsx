@@ -8,9 +8,7 @@ function Footer() {
       className="text-white px-10 py-16"
     >
       <div className="max-w-6xl mx-auto">
-     
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-    
           <div className="flex flex-col gap-4">
             <img
               src="/src/assets/Codelab.webp"
@@ -22,7 +20,6 @@ function Footer() {
               through cutting-edge technology.
             </p>
           </div>
-
           <div className="flex flex-col gap-4">
             <h4 className="text-white font-semibold text-sm">Quick Links</h4>
             <ul className="flex flex-col gap-3">
@@ -45,8 +42,6 @@ function Footer() {
               ))}
             </ul>
           </div>
-
-          {/* Services */}
           <div className="flex flex-col gap-4">
             <h4 className="text-white font-semibold text-sm">Services</h4>
             <ul className="flex flex-col gap-3">
@@ -75,7 +70,6 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Get In Touch */}
           <div className="flex flex-col gap-4">
             <h4 className="text-white font-semibold text-sm">Get In Touch</h4>
             <ul className="flex flex-col gap-3">
@@ -86,7 +80,7 @@ function Footer() {
                 Tirana, Albania
               </li>
             </ul>
-            {/* Social icons */}
+
             <div className="flex gap-4 mt-2">
               <a
                 href="#"
@@ -144,7 +138,6 @@ function Footer() {
           </div>
         </div>
 
-        
         <div
           className="flex flex-col md:flex-row items-center justify-between pt-8 gap-4"
           style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
