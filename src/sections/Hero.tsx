@@ -1,5 +1,3 @@
-import { useEffect, useRef } from "react";
-
 type Feature = {
   title: string;
   description: string;
@@ -46,114 +44,13 @@ const features: Feature[] = [
 ];
 
 function Hero() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const mouse = { x: -1000, y: -1000 };
-
-    window.addEventListener("mousemove", (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    });
-
-    const particles: {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      size: number;
-    }[] = [];
-
-    for (let i = 0; i < 80; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        size: Math.random() * 2 + 1,
-      });
-    }
-
-    function draw() {
-      if (!ctx || !canvas) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 150) {
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(0, 212, 255, ${0.8 * (1 - dist / 150)})`;
-            ctx.lineWidth = 0.5;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-
-        const mdx = particles[i].x - mouse.x;
-        const mdy = particles[i].y - mouse.y;
-        const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-        if (mdist < 200) {
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(0, 212, 255, ${0.4 * (1 - mdist / 200)})`;
-          ctx.lineWidth = 0.8;
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(mouse.x, mouse.y);
-          ctx.stroke();
-        }
-      }
-
-      for (const p of particles) {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(0, 212, 255, 0.6)";
-        ctx.fill();
-
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-      }
-
-      requestAnimationFrame(draw);
-    }
-
-    draw();
-
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <>
+      
       <section
         id="hero"
-        className="relative bg-[#0a0a0a] text-white min-h-screen flex items-center justify-center px-8 pt-20"
+        className="relative text-white min-h-screen flex items-center justify-center px-8 pt-20"
       >
-        <canvas
-          ref={canvasRef}
-          className="absolute top-0 left-0 w-full h-full pointer-events-none"
-        />
-
         <div className="relative z-10 text-center max-w-4xl mx-auto">
           <span className="inline-block px-4 py-2 bg-[#00d4ff]/10 border border-[#00d4ff]/30 rounded-full text-[0.85rem] font-medium tracking-wider uppercase mb-8 text-[#00d4ff]">
             Software Development Excellence
@@ -174,12 +71,12 @@ function Hero() {
           </p>
 
           <div className="flex gap-4 mt-10 justify-center">
-            <a href="#contact">
+            <a href="/contact">
               <button className="px-8 py-4 bg-[#00d4ff] text-[#0a0a0a] rounded font-semibold transition-all duration-300 hover:bg-[#00d4ff]/80">
                 Start Your Project
               </button>
             </a>
-            <a href="#services">
+            <a href="/services">
               <button className="px-8 py-4 bg-transparent border border-white/20 text-white rounded font-semibold transition-all duration-300 hover:border-[#00d4ff] hover:text-[#00d4ff]">
                 Our Services
               </button>
@@ -188,7 +85,8 @@ function Hero() {
         </div>
       </section>
 
-      <section className="relative bg-[#0a0a0a] text-white px-8 py-24">
+      {/* Why Choose Us Section */}
+      <section className="relative text-white px-8 py-24">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-2 bg-[#00d4ff]/10 border border-[#00d4ff]/30 rounded-full text-[0.85rem] font-medium tracking-wider uppercase mb-4 text-[#00d4ff]">

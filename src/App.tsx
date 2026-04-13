@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import ParticleBackground from "./components/Particlebackground"
 import Home from './pages/Home'
 import ServicesPage from './pages/ServicesPage'
 import ContactPage from './pages/ContactPage'
@@ -11,6 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <div style={{ backgroundColor: "#0a0a0a" }} className="min-h-screen text-white">
+        <ParticleBackground />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
